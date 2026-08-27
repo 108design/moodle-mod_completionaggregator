@@ -1,0 +1,33 @@
+<?php
+// This file is part of a 108design source-available software product.
+//
+// Copyright (C) 2026 Andreas Giesen <andreas@108design.com>
+//
+// Use and modification are permitted only under the Software License included
+// with this distribution. Redistribution and circumvention of Pro feature or
+// licensing restrictions are prohibited. See LICENSE.md for the full terms.
+
+defined('MOODLE_INTERNAL') || die();
+
+$capabilities = [
+    'mod/completionaggregator:addinstance' => [
+        'riskbitmask' => RISK_XSS,
+        'captype' => 'write',
+        'contextlevel' => CONTEXT_COURSE,
+        'archetypes' => ['editingteacher' => CAP_ALLOW, 'manager' => CAP_ALLOW],
+        'clonepermissionsfrom' => 'moodle/course:manageactivities',
+    ],
+    'mod/completionaggregator:view' => [
+        'captype' => 'read',
+        'contextlevel' => CONTEXT_MODULE,
+        'archetypes' => ['teacher' => CAP_ALLOW, 'editingteacher' => CAP_ALLOW, 'manager' => CAP_ALLOW],
+    ],
+    'mod/completionaggregator:manage' => [
+        'riskbitmask' => RISK_CONFIG,
+        'captype' => 'write',
+        'contextlevel' => CONTEXT_MODULE,
+        'archetypes' => ['editingteacher' => CAP_ALLOW, 'manager' => CAP_ALLOW],
+        'clonepermissionsfrom' => 'moodle/course:manageactivities',
+    ],
+];
+
