@@ -13,4 +13,4 @@ cyclic dependencies are rejected, and backup/restore remaps activity references.
 
 ## License
 
-See [the 108design Completion Aggregator Software License](LICENSE.md).
+This is a 108design source-available commercial software license, not an open-source license. See [LICENSE.md](https://github.com/108design/moodle-mod_completionaggregator/blob/main/LICENSE.md) for the full terms.
