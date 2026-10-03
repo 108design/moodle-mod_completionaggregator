@@ -1,15 +1,35 @@
-# Completion Aggregator
+# Completion Aggregator for Moodle
 
-Moodle activity module for calculating automatic completion from a configurable
-threshold of other activity-completion states. Supports Moodle 4.5 and later
-compatible releases. Release metadata is in `version.php`.
+Combine several activity-completion requirements into one course milestone.
+Completion Aggregator completes automatically when a chosen number of selected
+activities meet your required completion state.
 
-Install this repository's contents as `mod/completionaggregator` below Moodle's
-plugin webroot, then run Moodle's normal upgrade process. Moodle 5.1 and newer
-normally use `public/mod/completionaggregator`.
+## Installation
 
-Source relations are normalized, recalculation responds to completion events,
-cyclic dependencies are rejected, and backup/restore remaps activity references.
+This beta release requires Moodle 4.5 or later. Install as `mod/completionaggregator`
+below Moodle's plugin directory and complete installation through
+**Site administration → Notifications**. For Moodle installations using the split
+web directory, use `public/mod/completionaggregator`.
+
+## Configuring a milestone
+
+1. Enable activity completion in the course and configure the source activities.
+2. Add a **Completion Aggregator** activity.
+3. Select the activities whose completion should count.
+4. Set the minimum number that must qualify and choose **Complete** or
+   **Complete and passed** as the required source state.
+5. Save the activity. Completion is recalculated when the source activities change.
+
+For example, select five practice activities and require any three to be complete.
+The aggregator can then be used as a single completion requirement elsewhere in
+the course. Circular dependencies are rejected when configuring the activity.
+
+## Maintaining the course
+
+If you delete a source activity, review the aggregator's selected sources and
+threshold: the required number is not reduced automatically. Course backup and
+restore preserve references to source activities that are available in the restored
+course; review the settings if some sources were omitted.
 
 ## License
 
