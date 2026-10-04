@@ -6,7 +6,7 @@ activities meet your required completion state.
 
 ## Installation
 
-This beta release requires Moodle 4.5 or later. Install as `mod/completionaggregator`
+Completion Aggregator requires Moodle 4.5 or later. Install as `mod/completionaggregator`
 below Moodle's plugin directory and complete installation through
 **Site administration → Notifications**. For Moodle installations using the split
 web directory, use `public/mod/completionaggregator`.

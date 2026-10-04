@@ -15,13 +15,17 @@ defined('MOODLE_INTERNAL') || die();
 
 final class observer {
     public static function completion_updated(\core\event\course_module_completion_updated $event): void {
-        global $CFG;
-        require_once($CFG->libdir . '/completionlib.php');
         $userid = (int)($event->relateduserid ?: ($event->other['userid'] ?? 0));
         if (!$userid) {
             return;
         }
-        foreach (repository::get_dependants((int)$event->contextinstanceid) as $aggregator) {
+        self::update_dependants((int)$event->contextinstanceid, $userid);
+    }
+
+    private static function update_dependants(int $sourcecmid, int $userid): void {
+        global $CFG;
+        require_once($CFG->libdir . '/completionlib.php');
+        foreach (repository::get_dependants($sourcecmid) as $aggregator) {
             $cm = get_coursemodule_from_instance('completionaggregator', $aggregator->id, $aggregator->course, false, MUST_EXIST);
             $completion = new \completion_info(get_course($aggregator->course));
             if ($completion->is_enabled($cm)) {
@@ -42,9 +46,20 @@ final class observer {
         foreach ($dependants as $aggregator) {
             $cm = get_coursemodule_from_instance('completionaggregator', $aggregator->id, $aggregator->course, false, IGNORE_MISSING);
             if ($cm) {
-                (new \completion_info(get_course($aggregator->course)))->reset_all_state($cm);
+                $completion = new \completion_info(get_course($aggregator->course));
+                $userids = $DB->get_fieldset_select('course_modules_completion', 'userid',
+                    'coursemoduleid = :cmid', ['cmid' => $cm->id]);
+                foreach ($completion->get_tracked_users() as $user) {
+                    $userids[] = $user->id;
+                }
+                $completion->reset_all_state($cm);
+                // Reset can leave an incomplete state without emitting an update
+                // event. Recalculate direct dependants explicitly in that case;
+                // their normal completion events propagate through further chains.
+                foreach (array_unique(array_map('intval', $userids)) as $userid) {
+                    self::update_dependants((int)$cm->id, $userid);
+                }
             }
         }
     }
 }
-

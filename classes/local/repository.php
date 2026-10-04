@@ -14,8 +14,9 @@ defined('MOODLE_INTERNAL') || die();
 final class repository {
     public static function get_source_ids(int $aggregatorid): array {
         global $DB;
-        return array_map('intval', array_values($DB->get_fieldset_select(
-            'completionaggregator_sources', 'cmid', 'aggregatorid = :id', ['id' => $aggregatorid], 'sortorder, id'
+        return array_map('intval', array_values($DB->get_fieldset_sql(
+            'SELECT cmid FROM {completionaggregator_sources} WHERE aggregatorid = :id ORDER BY sortorder, id',
+            ['id' => $aggregatorid]
         )));
     }
 
@@ -85,4 +86,3 @@ final class repository {
         return false;
     }
 }
-

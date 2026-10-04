@@ -7,11 +7,9 @@
 // with this distribution. Redistribution and circumvention of Pro feature or
 // licensing restrictions are prohibited. See LICENSE.md for the full terms.
 
-namespace mod_completionaggregator_generator;
-
 defined('MOODLE_INTERNAL') || die();
 
-class component_generator extends \testing_module_generator {
+class mod_completionaggregator_generator extends \testing_module_generator {
     public function create_instance($record = null, ?array $options = null) {
         $record = (object)(array)$record;
         $record->requiredcount = $record->requiredcount ?? 1;

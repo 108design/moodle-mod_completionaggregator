@@ -10,6 +10,9 @@
 defined('MOODLE_INTERNAL') || die();
 
 class restore_completionaggregator_activity_structure_step extends restore_activity_structure_step {
+    /** @var array Source references awaiting the complete course-module mapping. */
+    private array $pendingsources = [];
+
     protected function define_structure(): array {
         $paths = [
             new restore_path_element('completionaggregator', '/activity/completionaggregator'),
@@ -27,20 +30,32 @@ class restore_completionaggregator_activity_structure_step extends restore_activ
     }
 
     protected function process_completionaggregator_source($data): void {
-        global $DB;
         $data = (object)$data;
-        $mappedcmid = $this->get_mappingid('course_module', $data->cmid, 0);
-        if (!$mappedcmid) {
-            return;
-        }
-        $DB->insert_record('completionaggregator_sources', (object)[
+        $this->pendingsources[] = (object)[
             'aggregatorid' => $this->get_new_parentid('completionaggregator'),
-            'cmid' => $mappedcmid,
-            'sortorder' => $data->sortorder,
-        ]);
+            'oldcmid' => (int)$data->cmid,
+            'sortorder' => (int)$data->sortorder,
+        ];
     }
 
     protected function after_execute(): void {
         $this->add_related_files('mod_completionaggregator', 'intro', null);
+    }
+
+    protected function after_restore(): void {
+        global $DB;
+        // A referenced activity can follow this aggregator in the restore plan.
+        foreach ($this->pendingsources as $source) {
+            $mappedcmid = $this->get_mappingid('course_module', $source->oldcmid, 0);
+            if (!$mappedcmid) {
+                continue; // A source excluded from this backup must stay excluded.
+            }
+            $DB->insert_record('completionaggregator_sources', (object)[
+                'aggregatorid' => $source->aggregatorid,
+                'cmid' => $mappedcmid,
+                'sortorder' => $source->sortorder,
+            ]);
+        }
+        $this->pendingsources = [];
     }
 }
