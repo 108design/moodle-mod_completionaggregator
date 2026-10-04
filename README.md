@@ -31,6 +31,38 @@ threshold: the required number is not reduced automatically. Course backup and
 restore preserve references to source activities that are available in the restored
 course; review the settings if some sources were omitted.
 
+## Screenshots
+
+<details>
+<summary>View screenshots (4)</summary>
+
+Click a preview to open the full-size screenshot.
+
+<table>
+<tr>
+<td align="center" width="50%" valign="middle">
+<a href="https://raw.githubusercontent.com/108design/moodle-mod_completionaggregator/main/docs/screenshots/ca-activities.jpg"><img src="https://raw.githubusercontent.com/108design/moodle-mod_completionaggregator/main/docs/screenshots/ca-activities.jpg" width="300" height="127" alt="Available source activities"></a><br>
+<sub>Available source activities</sub>
+</td>
+<td align="center" width="50%" valign="middle">
+<a href="https://raw.githubusercontent.com/108design/moodle-mod_completionaggregator/main/docs/screenshots/ca-completion-rule.jpg"><img src="https://raw.githubusercontent.com/108design/moodle-mod_completionaggregator/main/docs/screenshots/ca-completion-rule.jpg" width="292" height="160" alt="Selecting sources and the completion rule"></a><br>
+<sub>Selecting sources and the completion rule</sub>
+</td>
+</tr>
+<tr>
+<td align="center" width="50%" valign="middle">
+<a href="https://raw.githubusercontent.com/108design/moodle-mod_completionaggregator/main/docs/screenshots/ca-completion-settings.jpg"><img src="https://raw.githubusercontent.com/108design/moodle-mod_completionaggregator/main/docs/screenshots/ca-completion-settings.jpg" width="300" height="110" alt="Automatic completion settings"></a><br>
+<sub>Automatic completion settings</sub>
+</td>
+<td align="center" width="50%" valign="middle">
+<a href="https://raw.githubusercontent.com/108design/moodle-mod_completionaggregator/main/docs/screenshots/ca-hidden-activity.jpg"><img src="https://raw.githubusercontent.com/108design/moodle-mod_completionaggregator/main/docs/screenshots/ca-hidden-activity.jpg" width="202" height="160" alt="Milestone overview"></a><br>
+<sub>Milestone overview</sub>
+</td>
+</tr>
+</table>
+
+</details>
+
 ## License
 
 This is a 108design source-available commercial software license, not an open-source license. See [LICENSE.md](https://github.com/108design/moodle-mod_completionaggregator/blob/main/LICENSE.md) for the full terms.
