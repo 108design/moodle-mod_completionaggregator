@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="https://raw.githubusercontent.com/108design/moodle-mod_completionaggregator/main/docs/branding/logo.svg" alt="Completion Aggregator logo" width="443" height="443">
+</p>
+
 # Completion Aggregator for Moodle
 
 Combine several activity-completion requirements into one course milestone.
