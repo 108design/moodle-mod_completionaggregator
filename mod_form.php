@@ -1,4 +1,11 @@
 <?php
+/**
+ * File documentation for mod_form.php.
+ *
+ * @package   mod_completionaggregator
+ * @copyright 2026 Andreas Giesen <andreas@108design.com>
+ * @license   See LICENSE.md for the full terms.
+ */
 // This file is part of a 108design source-available software product.
 //
 // Copyright (C) 2026 Andreas Giesen <andreas@108design.com>
@@ -14,6 +21,7 @@ final class mod_completionaggregator_mod_form extends moodleform_mod {
     public function definition(): void {
         global $CFG;
         $mform = $this->_form;
+        \mod_completionaggregator\local\context_help::register_activity_settings();
         $mform->addElement('header', 'general', get_string('general', 'form'));
         $mform->addElement('text', 'name', get_string('completionaggregatorname', 'completionaggregator'), ['size' => 64]);
         $mform->setType('name', PARAM_TEXT);
@@ -27,13 +35,18 @@ final class mod_completionaggregator_mod_form extends moodleform_mod {
             ['multiple' => true]);
         $mform->addHelpButton('sourcecmids', 'sourceactivities', 'completionaggregator');
         $mform->setType('sourcecmids', PARAM_INT);
+        $mform->addElement('html', \mod_completionaggregator\local\context_help::field_icon('sourcecmids', 'selection'));
         $mform->addElement('text', 'requiredcount', get_string('requiredcount', 'completionaggregator'), ['size' => 5]);
         $mform->setType('requiredcount', PARAM_INT);
         $mform->setDefault('requiredcount', 1);
+        $mform->addHelpButton('requiredcount', 'requiredcount', 'completionaggregator');
+        $mform->addElement('html', \mod_completionaggregator\local\context_help::field_icon('requiredcount', 'threshold'));
         $mform->addElement('select', 'conditiontype', get_string('conditiontype', 'completionaggregator'), [
             \mod_completionaggregator\local\constants::CONDITION_COMPLETE => get_string('conditioncomplete', 'completionaggregator'),
             \mod_completionaggregator\local\constants::CONDITION_PASS => get_string('conditionpass', 'completionaggregator'),
         ]);
+        $mform->addHelpButton('conditiontype', 'conditiontype', 'completionaggregator');
+        $mform->addElement('html', \mod_completionaggregator\local\context_help::field_icon('conditiontype', 'conditions'));
         $this->standard_coursemodule_elements();
         $this->add_action_buttons();
     }
@@ -61,6 +74,8 @@ final class mod_completionaggregator_mod_form extends moodleform_mod {
         $name = \mod_completionaggregator\local\constants::RULE . $this->get_suffix();
         $this->_form->addElement('checkbox', $name, '', get_string('completionthreshold', 'completionaggregator'));
         $this->_form->setDefault($name, 1);
+        $this->_form->addHelpButton($name, 'completionthreshold', 'completionaggregator');
+        $this->_form->addElement('html', \mod_completionaggregator\local\context_help::field_icon($name, 'completion'));
         return [$name];
     }
 

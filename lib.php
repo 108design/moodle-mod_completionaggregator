@@ -1,4 +1,11 @@
 <?php
+/**
+ * File documentation for lib.php.
+ *
+ * @package   mod_completionaggregator
+ * @copyright 2026 Andreas Giesen <andreas@108design.com>
+ * @license   See LICENSE.md for the full terms.
+ */
 // This file is part of a 108design source-available software product.
 //
 // Copyright (C) 2026 Andreas Giesen <andreas@108design.com>
@@ -95,4 +102,32 @@ function completionaggregator_cm_info_dynamic(cm_info $cm): void {
     if (!has_capability('mod/completionaggregator:view', context_module::instance($cm->id))) {
         $cm->set_user_visible(false);
     }
+}
+
+/**
+ * Record an authorised native module view without changing the aggregation rule.
+ *
+ * @param stdClass $instance Aggregator instance.
+ * @param stdClass $course Owning course.
+ * @param stdClass $cm Course module.
+ * @param context_module $context Module context.
+ */
+function completionaggregator_view(stdClass $instance, stdClass $course, stdClass $cm, context_module $context): void {
+    require_capability('mod/completionaggregator:view', $context);
+    if ((int)$cm->instance !== (int)$instance->id || (int)$cm->course !== (int)$course->id
+            || (int)$context->instanceid !== (int)$cm->id) {
+        throw new invalid_parameter_exception('Activity view context does not match its instance.');
+    }
+    $event = \mod_completionaggregator\event\course_module_viewed::create([
+        'objectid' => $instance->id, 'context' => $context,
+    ]);
+    $event->add_record_snapshot('course', $course);
+    $event->add_record_snapshot('course_modules', $cm);
+    $event->add_record_snapshot('completionaggregator', $instance);
+    $event->trigger();
+}
+
+/** Native navbar help on the authorised activity and its edit form. */
+function mod_completionaggregator_render_navbar_output(\renderer_base $renderer): string {
+    return \mod_completionaggregator\local\context_help::navbar($renderer);
 }

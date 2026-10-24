@@ -42,7 +42,7 @@ Click a preview to open the full-size screenshot.
 
 ## Installation
 
-Completion Aggregator requires Moodle 4.5 or later. Install as `mod/completionaggregator`
+Completion Aggregator supports Moodle 4.5 to 5.3. Install as `mod/completionaggregator`
 below Moodle's plugin directory and complete installation through
 **Site administration → Notifications**. For Moodle installations using the split
 web directory, use `public/mod/completionaggregator`.
@@ -52,13 +52,24 @@ web directory, use `public/mod/completionaggregator`.
 1. Enable activity completion in the course and configure the source activities.
 2. Add a **Completion Aggregator** activity.
 3. Select the activities whose completion should count.
-4. Set the minimum number that must qualify and choose **Complete** or
-   **Complete and passed** as the required source state.
-5. Save the activity. Completion is recalculated when the source activities change.
+4. Set **Required Number** and choose **Activity Is Complete** or
+   **Activity Is Complete and Passed** as the required source state.
+5. Select automatic activity completion and enable **Complete When the Aggregation
+   Threshold Is Met**.
+6. Save the activity. Completion is recalculated when the source activities change.
 
 For example, select five practice activities and require any three to be complete.
 The aggregator can then be used as a single completion requirement elsewhere in
 the course. Circular dependencies are rejected when configuring the activity.
+
+The detail page has its own view permission and is available to teaching and
+managing roles by default. Learners can receive the calculated completion state
+without being able to open that page. Its source list respects each viewer’s
+activity access; hidden sources can still be part of the configured rule.
+
+Use **Activity Help** for explanations of source selection, thresholds, completion
+states and course maintenance. Fields have native short help and direct links to
+their detailed topics.
 
 ## Maintaining the course
 

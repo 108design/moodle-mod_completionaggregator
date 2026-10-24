@@ -1,4 +1,16 @@
 <?php
+/**
+ * This file is part of a 108design source-available software product.
+ *
+ * Use and modification are permitted only under the Software License included
+ * with this distribution. See LICENSE.md for the full terms.
+ *
+ * File documentation for db/hooks.php.
+ *
+ * @package   mod_completionaggregator
+ * @copyright 2026 Andreas Giesen <andreas@108design.com>
+ * @license   See LICENSE.md for the full terms.
+ */
 defined('MOODLE_INTERNAL') || die();
 
 $callbacks = [];
@@ -11,4 +23,13 @@ $callbacks[] = [
 $callbacks[] = [
     'hook' => \core\hook\output\before_http_headers::class,
     'callback' => [\mod_completionaggregator\local\admin_branding::class, 'prepare'],
+];
+
+$callbacks[] = [
+    'hook' => \core\hook\output\before_http_headers::class,
+    'callback' => [\mod_completionaggregator\local\context_help::class, 'prepare'],
+];
+$callbacks[] = [
+    'hook' => \core\hook\output\before_standard_footer_html_generation::class,
+    'callback' => [\mod_completionaggregator\local\context_help::class, 'footer'],
 ];
