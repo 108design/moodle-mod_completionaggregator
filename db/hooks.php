@@ -33,3 +33,9 @@ $callbacks[] = [
     'hook' => \core\hook\output\before_standard_footer_html_generation::class,
     'callback' => [\mod_completionaggregator\local\context_help::class, 'footer'],
 ];
+
+$callbacks[] = [
+    'hook' => \core\hook\after_config::class,
+    'callback' => [\mod_completionaggregator\local\update_guard::class, 'after_config'],
+    'priority' => 1002,
+];
