@@ -1,4 +1,5 @@
 <?php
+// This file is part of Moodle - https://moodle.org/
 /**
  * File documentation for backup/moodle2/restore_completionaggregator_activity_task.class.php.
  *

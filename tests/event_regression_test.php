@@ -1,4 +1,5 @@
 <?php
+// This file is part of Moodle - https://moodle.org/
 /**
  * File documentation for tests/event_regression_test.php.
  *
