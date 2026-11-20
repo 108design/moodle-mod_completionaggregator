@@ -18,7 +18,7 @@
 defined('MOODLE_INTERNAL') || die();
 
 $plugin->component = 'mod_completionaggregator';
-$plugin->version = 2026111400;
+$plugin->version = 2026112000;
 $plugin->requires = 2024100700;
 $plugin->maturity = MATURITY_STABLE;
-$plugin->release = '1.6.1';
+$plugin->release = '1.6.2';
