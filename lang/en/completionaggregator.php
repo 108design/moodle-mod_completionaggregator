@@ -73,13 +73,13 @@ $string['threshold_help'] = 'The threshold means at least this many selected sou
 $string['conditions_help'] = 'Completion alone includes completed failures. Complete and passed requires the native passing completion state.';
 $string['completion_help'] = 'Keep the aggregation condition enabled under automatic completion. Source changes can complete or reverse the milestone.';
 $string['maintenance_help'] = 'Review source selections and threshold after deletions or partial course restores.';
-$string['overview'] = $string['adminhelp_overview'];
-$string['setup'] = $string['adminhelp_setup'];
-$string['selection'] = $string['adminhelp_selection'];
-$string['threshold'] = $string['adminhelp_threshold'];
-$string['conditions'] = $string['adminhelp_conditions'];
-$string['completion'] = $string['adminhelp_completion'];
-$string['maintenance'] = $string['adminhelp_maintenance'];
+$string['overview'] = 'Understanding the Milestone';
+$string['setup'] = 'Configuring a Milestone';
+$string['selection'] = 'Selecting Source Activities';
+$string['threshold'] = 'Required Number';
+$string['conditions'] = 'Completion Conditions';
+$string['completion'] = 'Automatic Milestone Completion';
+$string['maintenance'] = 'Maintaining Sources and Rules';
 
 
 $string['updateguard_heading'] = 'Update stopped';
@@ -98,3 +98,12 @@ $string['updateguard_installed'] = 'The installed update protection is incomplet
 $string['updateguard_operation'] = 'This combination of installation actions is not supported. Start a single update operation again.';
 $string['updateguard_failed'] = 'The update could not be verified. No installation was started.';
 $string['updateguard_back'] = 'Return to plugin overview';
+
+// Optional information before native package confirmation.
+$string['updateinfo_heading'] = 'Package information: {$a}';
+$string['updateinfo_verified'] = 'The embedded publisher record matches the installed release line.';
+$string['updateinfo_missing'] = 'This package has no embedded publisher verification record.';
+$string['updateinfo_line'] = 'This package identifies a different release line from the installed plugin.';
+$string['updateinfo_mismatch'] = 'The embedded publisher record could not be verified against the installed plugin\'s publisher information.';
+$string['updateinfo_unavailable'] = 'Publisher information for the selected package could not be read.';
+$string['updateinfo_choice'] = 'Review the package source and Moodle\'s validation details before continuing. Use "{$a}" below to cancel.';

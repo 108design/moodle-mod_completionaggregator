@@ -73,13 +73,13 @@ $string['threshold_help'] = 'Mindestens so viele ausgewählte Quellen müssen di
 $string['conditions_help'] = 'Ein Abschluss zählt auch bei nicht bestandenem Ergebnis. „Abgeschlossen und bestanden“ verlangt den nativen Bestanden-Abschlussstatus.';
 $string['completion_help'] = 'Lasse die Aggregationsbedingung beim automatischen Abschluss aktiviert. Änderungen an Quellen können den Meilenstein abschließen oder wieder öffnen.';
 $string['maintenance_help'] = 'Prüfe nach Löschungen oder teilweiser Kurswiederherstellung die Quellauswahl und die Schwelle.';
-$string['overview'] = $string['adminhelp_overview'];
-$string['setup'] = $string['adminhelp_setup'];
-$string['selection'] = $string['adminhelp_selection'];
-$string['threshold'] = $string['adminhelp_threshold'];
-$string['conditions'] = $string['adminhelp_conditions'];
-$string['completion'] = $string['adminhelp_completion'];
-$string['maintenance'] = $string['adminhelp_maintenance'];
+$string['overview'] = 'Den Meilenstein verstehen';
+$string['setup'] = 'Einen Meilenstein einrichten';
+$string['selection'] = 'Quellaktivitäten auswählen';
+$string['threshold'] = 'Erforderliche Anzahl';
+$string['conditions'] = 'Abschlussbedingungen';
+$string['completion'] = 'Automatischer Meilensteinabschluss';
+$string['maintenance'] = 'Quellen und Regeln pflegen';
 
 
 $string['updateguard_heading'] = 'Update angehalten';
@@ -98,3 +98,12 @@ $string['updateguard_installed'] = 'Der installierte Updateschutz ist unvollstä
 $string['updateguard_operation'] = 'Diese Kombination von Installationsaktionen wird nicht unterstützt. Starte einen einzelnen Updatevorgang erneut.';
 $string['updateguard_failed'] = 'Das Update konnte nicht geprüft werden. Es wurde keine Installation gestartet.';
 $string['updateguard_back'] = 'Zur Pluginübersicht';
+
+// Optional information before native package confirmation.
+$string['updateinfo_heading'] = 'Paketinformationen: {$a}';
+$string['updateinfo_verified'] = 'Der eingebettete Herausgebernachweis passt zur installierten Ausgabe.';
+$string['updateinfo_missing'] = 'Dieses Paket enthält keinen eingebetteten Herausgebernachweis.';
+$string['updateinfo_line'] = 'Dieses Paket gehört zu einer anderen Ausgabe als das installierte Plugin.';
+$string['updateinfo_mismatch'] = 'Der eingebettete Herausgebernachweis konnte mit den Angaben des installierten Plugins nicht bestätigt werden.';
+$string['updateinfo_unavailable'] = 'Die Herausgeberinformationen für das ausgewählte Paket konnten nicht gelesen werden.';
+$string['updateinfo_choice'] = 'Kontrolliere vor dem Fortfahren die Paketquelle und Moodles Prüfergebnisse. Mit „{$a}“ unten kannst Du abbrechen.';
