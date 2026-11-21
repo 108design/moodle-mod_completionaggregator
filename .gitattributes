@@ -38,6 +38,7 @@
 "/classes/local/evaluator.php" -export-ignore -export-subst
 "/classes/local/repository.php" -export-ignore -export-subst
 "/classes/local/update_guard.php" -export-ignore -export-subst
+"/classes/local/update_notice.php" -export-ignore -export-subst
 "/classes/observer.php" -export-ignore -export-subst
 "/classes/privacy" -export-ignore -export-subst
 "/classes/privacy/provider.php" -export-ignore -export-subst
@@ -69,6 +70,7 @@
 "/pix/icon.svg" -export-ignore -export-subst
 "/release-guard-policy.json" -export-ignore -export-subst
 "/release-manifest.json" -export-ignore -export-subst
+"/release-metadata.php" -export-ignore -export-subst
 "/release-signature.txt" -export-ignore -export-subst
 "/styles" -export-ignore -export-subst
 "/styles/context_help.css" -export-ignore -export-subst
@@ -82,5 +84,6 @@
 "/tests/restore_regression_test.php" -export-ignore -export-subst
 "/tests/view_event_test.php" -export-ignore -export-subst
 "/update-guard.php" -export-ignore -export-subst
+"/update-notice.php" -export-ignore -export-subst
 "/version.php" -export-ignore -export-subst
 "/view.php" -export-ignore -export-subst
