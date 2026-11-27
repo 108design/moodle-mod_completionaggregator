@@ -60,6 +60,8 @@
 "/lang" -export-ignore -export-subst
 "/lang/de" -export-ignore -export-subst
 "/lang/de/completionaggregator.php" -export-ignore -export-subst
+"/lang/de_du" -export-ignore -export-subst
+"/lang/de_du/completionaggregator.php" -export-ignore -export-subst
 "/lang/en" -export-ignore -export-subst
 "/lang/en/completionaggregator.php" -export-ignore -export-subst
 "/lib.php" -export-ignore -export-subst
