@@ -205,4 +205,11 @@ body.mod-completionaggregator-help-legacy-drawers.mod-completionaggregator-help-
     font-size: 1.5rem;
     line-height: 1;
 }
+.mod-completionaggregator-context-help .mod-completionaggregator-help-close > svg {
+    display: block;
+    flex: 0 0 auto;
+    width: 1rem;
+    height: 1rem;
+    margin: 0;
+}
 /* END GENERATED HELP PANEL CONTROLS */
